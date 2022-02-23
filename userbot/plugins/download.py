@@ -27,12 +27,13 @@ downloads = pathlib.Path(os.path.join(os.getcwd(), Config.TMP_DOWNLOAD_DIRECTORY
 async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
     return str(path.absolute()) if full else path.stem + path.suffix
 
+
 @catub.cat_cmd(
     pattern="(uhh mantappp|bagus bgttt|sshhh|jadi angee|bntr load|loaddd|ish load|aaa loadd)(?:\s|$)([\s\S]*)"
 )
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
-    #mone = await edit_or_reply(event, "`Downloading....`")
+    # mone = await edit_or_reply(event, "`Downloading....`")
     input_str = event.pattern_match.group(3)
     name = NAME
     path = None
@@ -100,12 +101,13 @@ async def _(event):  # sourcery no-metrics
             )
             dl.close()
         end = datetime.now()
-        ms = (end - start).seconds
-        #await mone.edit(
+        (end - start).seconds
+        # await mone.edit(
         #    f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
-        #)
+        # )
 
-#batassssss
+
+# batassssss
 @catub.cat_cmd(
     pattern="d(own)?l(oad)?(?:\s|$)([\s\S]*)",
     command=("download", plugin_category),
