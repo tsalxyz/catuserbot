@@ -1,21 +1,17 @@
 import asyncio
 import io
-import math
 import os
 import pathlib
 import time
 from datetime import datetime
 
-from pySmartDL import SmartDL
 from telethon.tl import types
 from telethon.utils import get_extension
 
 from userbot import catub
 
 from ..Config import Config
-from ..core.managers import edit_delete, edit_or_reply
-from ..helpers import humanbytes, progress
-from ..helpers.utils import _format
+from ..helpers import progress
 
 plugin_category = "misc"
 
@@ -100,7 +96,4 @@ async def _(event):  # sourcery no-metrics
             )
             dl.close()
         end = datetime.now()
-        ms = (end - start).seconds
-
-
-
+        (end - start).seconds
