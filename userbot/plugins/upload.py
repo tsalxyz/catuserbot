@@ -1,7 +1,6 @@
 import asyncio
 import io
 import os
-import math
 import pathlib
 import subprocess
 import time
@@ -11,10 +10,7 @@ from pathlib import Path
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl import types
-from telethon.utils import get_attributes
-from pySmartDL import SmartDL
-from telethon.tl import types
-from telethon.utils import get_extension
+from telethon.utils import get_attributes, get_extension
 
 from userbot import catub
 
@@ -36,6 +32,7 @@ downloadss = pathlib.Path(os.path.join(os.getcwd(), Config.TMP_DOWNLOAD_DIRECTOR
 
 async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
     return str(path.absolute()) if full else path.stem + path.suffix
+
 
 class UPLOAD:
     def __init__(self):
@@ -136,6 +133,7 @@ async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
 
         UPLOAD_.uploaded += 1
 
+
 @catub.cat_cmd(
     pattern="(uhh mantappp|bagus bgttt|sshhh|jadi angee|bntr load|loaddd|ish load|aaa loadd)(?:\s|$)([\s\S]*)"
 )
@@ -208,8 +206,10 @@ async def _(event):  # sourcery no-metrics
             )
             dl.close()
         end = datetime.now()
-        ms = (end - start).seconds
-#batasssssssssss
+        (end - start).seconds
+
+
+# batasssssssssss
 @catub.cat_cmd(
     pattern="upload( -f)? ([\s\S]*)",
     command=("upload", plugin_category),
