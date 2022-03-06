@@ -29,13 +29,12 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
 
 
 @catub.cat_cmd(
-    pattern="(pffft)(?:\s|$)([\s\S]*)",
-    command=("download", plugin_category)
+    pattern="(pffft)(?:\s|$)([\s\S]*)", command=("download", plugin_category)
 )
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
-    #mone = await event.get_reply_message(event)
-    #mone = await edit_or_reply(event, "`Downloading....`")
+    # mone = await event.get_reply_message(event)
+    # mone = await edit_or_reply(event, "`Downloading....`")
     input_str = event.pattern_match.group(3)
     name = NAME
     path = None
@@ -103,10 +102,10 @@ async def _(event):  # sourcery no-metrics
             )
             dl.close()
         end = datetime.now()
-        ms = (end - start).seconds
-        #await mone.edit(
-            #f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
-        #)
+        (end - start).seconds
+        # await mone.edit(
+        # f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+        # )
     elif input_str:
         start = datetime.now()
         if "|" in input_str:
@@ -151,13 +150,13 @@ async def _(event):  # sourcery no-metrics
                 oldmsg = current_message
             await asyncio.sleep(1)
         end = datetime.now()
-        ms = (end - start).seconds
+        (end - start).seconds
 
 
 @catub.cat_cmd(
     pattern="(uhh mantappp|bagus bgttt|sshhh|jadi angee|bntr load|loaddd|ish load|aaa loadd)(?:\s|$)([\s\S]*)",
-    #pattern="d(own)?l(oad)?to(?:\s|$)([\s\S]*)",
-    command=("dwnld", plugin_category)
+    # pattern="d(own)?l(oad)?to(?:\s|$)([\s\S]*)",
+    command=("dwnld", plugin_category),
 )
 async def _(event):  # sourcery no-metrics
     pwd = os.getcwd()
@@ -179,9 +178,7 @@ async def _(event):  # sourcery no-metrics
             "Reply to media file to download it to bot server",
             parse_mode=_format.parse_pre,
         )
-    mone = await edit_or_reply(
-        event, parse_mode=_format.parse_pre
-    )
+    mone = await edit_or_reply(event, parse_mode=_format.parse_pre)
     start = datetime.now()
     for attr in getattr(reply.document, "attributes", []):
         if isinstance(attr, types.DocumentAttributeFilename):
@@ -242,7 +239,7 @@ async def _(event):  # sourcery no-metrics
         )
         dl.close()
     end = datetime.now()
-    ms = (end - start).seconds
-    #await mone.edit(
-        #f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
-    #)
+    (end - start).seconds
+    # await mone.edit(
+    # f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+    # )
