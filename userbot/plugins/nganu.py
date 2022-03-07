@@ -13,6 +13,9 @@ from userbot import catub
 from ..Config import Config
 from ..helpers import progress
 
+from ..core.managers import edit_delete, edit_or_reply
+from ..helpers import humanbytes, progress
+from ..helpers.utils import _format
 plugin_category = "misc"
 
 NAME = "untitled"
@@ -29,7 +32,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
 )
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
-    mone = await edit_or_replyyy(event, "`Downloading....`")
+    mone = await edit_or_reply(event)
     input_str = event.pattern_match.group(3)
     name = NAME
     path = None
