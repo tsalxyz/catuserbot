@@ -11,7 +11,7 @@ from telethon.utils import get_extension
 from userbot import catub
 
 from ..Config import Config
-from ..core.managers import edit_or_replyyy
+from ..core.managers import edit_or_reply
 from ..helpers import progress
 
 plugin_category = "misc"
