@@ -33,7 +33,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
 )
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
-    # mone = await edit_or_reply(event, "`Downloading....`")
+    mone = await edit_or_replyyy(event, "`Downloading....`")
     input_str = event.pattern_match.group(3)
     name = NAME
     path = None
@@ -80,14 +80,14 @@ async def _(event):  # sourcery no-metrics
             await reply.download_media(
                 file=file_name.absolute(),
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "trying to download")
                 ),
             )
         elif not reply.document:
             file_name = await reply.download_media(
                 file=downloads,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "trying to download")
                 ),
             )
         else:
@@ -96,15 +96,15 @@ async def _(event):  # sourcery no-metrics
                 location=reply.document,
                 out=dl,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "trying to download")
                 ),
             )
             dl.close()
         end = datetime.now()
         (end - start).seconds
-        # await mone.edit(
-        #    f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
-        # )
+        await mone.editss(
+            f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+        )
 
 
 # batassssss
