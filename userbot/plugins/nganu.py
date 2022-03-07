@@ -11,7 +11,7 @@ from telethon.utils import get_extension
 from userbot import catub
 
 from ..Config import Config
-from ..core.managers import edit_or_reply, edit_delete
+from ..core.managers import edit_delete
 from ..helpers import progress
 
 plugin_category = "misc"
@@ -30,7 +30,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
 )
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
-    mone = await edit_delete(event,"loaddd")
+    mone = await edit_delete(event, "loaddd")
     input_str = event.pattern_match.group(3)
     name = NAME
     path = None
