@@ -11,11 +11,9 @@ from telethon.utils import get_extension
 from userbot import catub
 
 from ..Config import Config
+from ..core.managers import edit_or_reply
 from ..helpers import progress
 
-from ..core.managers import edit_delete, edit_or_reply
-from ..helpers import humanbytes, progress
-from ..helpers.utils import _format
 plugin_category = "misc"
 
 NAME = "untitled"
