@@ -98,9 +98,9 @@ async def _(event):  # sourcery no-metrics
             dl.close()
         end = datetime.now()
         (end - start).seconds
-        await mone.editss(
-            f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
-        )
+        #await mone.editss(
+            #f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+        #)
 
 
 # batassssss
