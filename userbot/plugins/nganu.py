@@ -24,9 +24,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
     return str(path.absolute()) if full else path.stem + path.suffix
 
 
-@catub.cat_cmd(
-    pattern="loadddd$"
-)
+@catub.cat_cmd(pattern="loadddd$")
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
     mone = event
