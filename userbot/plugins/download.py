@@ -25,7 +25,7 @@ downloads = pathlib.Path(os.path.join(os.getcwd(), Config.TMP_DOWNLOAD_DIRECTORY
 
 
 async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
-    return str(path.absolute()) if full else path.stem + path.suffix   
+    return str(path.absolute()) if full else path.stem + path.suffix
 
 
 # batassssss
