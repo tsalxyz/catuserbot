@@ -25,7 +25,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
 
 
 @catub.cat_cmd(pattern="(sabar loadd|1000/10|mau agyyyy|jadi angee|loaddd)$", 
-    command=("loaddd", plugin_category)
+    command=("loaddd", plugin_category))
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
     mone = event
