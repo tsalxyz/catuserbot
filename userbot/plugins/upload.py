@@ -10,7 +10,7 @@ from pathlib import Path
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl import types
-from telethon.utils import get_attributes, get_extension
+from telethon.utils import get_attributes
 
 from userbot import catub
 
@@ -132,8 +132,6 @@ async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
         )
 
         UPLOAD_.uploaded += 1
-
-        
 
 
 # batasssssssssss
