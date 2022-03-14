@@ -30,9 +30,9 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
 )
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
-    #mone = await event.get_reply_message()
+    # mone = await event.get_reply_message()
     sal = print("download file")
-    mone = sal# await edit_or_replyyy(event, "loaddddd :(")
+    mone = sal  # await edit_or_replyyy(event, "loaddddd :(")
     input_str = event.pattern_match.group(3)
     name = NAME
     path = None
@@ -102,8 +102,8 @@ async def _(event):  # sourcery no-metrics
         end = datetime.now()
         (end - start).seconds
         print("sukses execute")
-            #f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
-        #)
+        # f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+        # )
 
 
 # batassssss
