@@ -103,20 +103,19 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"Hey! 👤{mention},\
-                        \nI am {my_mention}'s assistant bot.\
-                        \nYou can contact to my master from here."
+            start_msg = f"Hi! 👤{mention},\
+                        \nI am {my_mention}'s assistant bot."
         buttons = [
             (
-                Button.url("Repo", "https://github.com/"),
+                #Button.url("Repo", "https://github.com/"),
                 Button.url(
-                    "Heroku",
+                    "Deploy?",
                     "https://dashboard.heroku.com/",
                 ),
             )
         ]
     else:
-        start_msg = "Hey Master!\
+        start_msg = "Hi Master!\
             \nHow can i help you ?"
         buttons = None
     try:
