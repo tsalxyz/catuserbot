@@ -36,9 +36,7 @@ async def startup_process():
     await load_plugins("assistant")
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("Yay your userbot is officially working.!!!")
-    print(
-        f"Congratulation, now type {cmdhr}alive to see message"
-    )
+    print(f"Congratulation, now type {cmdhr}alive to see message")
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
