@@ -107,7 +107,7 @@ async def bot_start(event):
                         \nI am {my_mention}'s assistant bot."
         buttons = [
             (
-                #Button.url("Repo", "https://github.com/"),
+                # Button.url("Repo", "https://github.com/"),
                 Button.url(
                     "Deploy?",
                     "https://dashboard.heroku.com/",
