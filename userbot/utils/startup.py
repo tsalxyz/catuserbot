@@ -4,7 +4,7 @@ import sys
 from datetime import timedelta
 from pathlib import Path
 
-from telethon import Button, functions, types, utils
+from telethon import functions, types, utils
 
 from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
@@ -63,7 +63,7 @@ async def startupmessage():
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/fe84caf8c406616dc6ade.jpg",
                 caption="**Your Userbot has been started successfully.**"
-                #buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
+                # buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
             )
     except Exception as e:
         LOGS.error(e)
