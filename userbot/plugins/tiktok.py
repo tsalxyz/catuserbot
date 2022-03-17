@@ -12,7 +12,7 @@ plugin_category = "utils"
     info={
         "header": "To download tiktok without watermark.",
         "usage": [
-            "{tr}tiktok <reply link/URL>",
+            "{tr}tiktok <reply link/URL>"
         ],
     },
 )
@@ -23,7 +23,7 @@ async def _(event):  # sourcery no-metrics
     reply_message = event.pattern_match.group(1)
     if ".com" not in reply_message:
         await edit_delete(event,
-            "`reply link to download tiktok`",
+            "`reply link to download tiktok`"
         )
     catevent(await edit_or_reply(event, "`Processing...`")
     chat = "@ttsavebot"
