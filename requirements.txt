@@ -43,6 +43,7 @@ pylast
 pymediainfo
 PyMuPDF
 pySmartDL
+py-tgcalls
 python-barcode
 python-dotenv
 pytz
