@@ -231,6 +231,7 @@ async def glax(event):
         event.client, bot_name, text, event.chat_id, reply_to_id, c_lick=c_lick
     )
 
+
 @catub.cat_cmd(
     pattern="(|b)stich(?:\s|$)([\s\S]*)",
     command=("stich", plugin_category),
@@ -297,7 +298,8 @@ async def stich(event):
     for files in (temp_name, file_name):
         if files and os.path.exists(files):
             os.remove(files)
-    
+
+
 @catub.cat_cmd(
     pattern="(|b)quby(?:\s|$)([\s\S]*)",
     command=("quby", plugin_category),
