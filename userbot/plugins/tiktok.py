@@ -21,7 +21,7 @@ async def _(event):  # sourcery no-metrics
     if event.fwd_from:
         return
     reply_message = event.pattern_match.group(1)
-    if ".com" not reply_message:
+    if ".com" not in reply_message:
         await edit_delete(event,
             "`reply link to download tiktok`",
         )
