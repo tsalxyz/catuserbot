@@ -38,6 +38,6 @@ async def _(event):  # sourcery no-metrics
         except YouBlockedUserError:
             await edit_delete(catevent, "`unblock @ttsavebot and then try`")
              return
-        await event.client.send_file(event.chat_id, video)
+        await event.client.send_file(catevent.chat_id, video)
         await event.client.delete_messages(conv.chat_id, [msg_start.id, r.id, msg.id, details.id, video.id]) 
         await event.delete()
