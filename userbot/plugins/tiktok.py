@@ -2,7 +2,7 @@ import asyncio
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError 
 from userbot import catub 
-from ..core.managers import edit_or_reply
+from ..core.managers import edit_or_reply, edit_delete
 
 plugin_category = "utils"
 
