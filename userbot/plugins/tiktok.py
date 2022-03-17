@@ -25,7 +25,7 @@ async def _(event):  # sourcery no-metrics
         await edit_delete(event,
             "`reply link to download tiktok`"
         )
-    catevent(await edit_or_reply(event, "`Processing...`")
+    catevent= await edit_or_reply(event, "`Processing...`")
     chat = "@ttsavebot"
     async with event.client.conversation(chat) as conv:
         try:
@@ -34,8 +34,10 @@ async def _(event):  # sourcery no-metrics
             msg = await conv.send_message(reply_message) 
             details = await conv.get_response()
             video = await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await edit_delete(catevent, "`unblock @ttsavebot and then try`")
+             return
         await event.client.send_file(event.chat_id, video)
         await event.client.delete_messages(conv.chat_id, [msg_start.id, r.id, msg.id, details.id, video.id]) 
         await event.delete()
