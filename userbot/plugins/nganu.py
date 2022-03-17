@@ -33,7 +33,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
     mone = await event.get_reply_message()
-    input_str = event.pattern_match.group(2)
+    input_str = event.pattern_match.group(1)
     name = NAME
     path = None
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
