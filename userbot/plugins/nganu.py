@@ -13,9 +13,7 @@ from telethon.utils import get_extension
 from userbot import catub
 
 from ..Config import Config
-from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import humanbytes, progress
-from ..helpers.utils import _format
 
 plugin_category = "misc"
 
@@ -102,11 +100,11 @@ async def _(event):  # sourcery no-metrics
             )
             dl.close()
         end = datetime.now()
-        ms = (end - start).seconds
+        (end - start).seconds
         print("sukses download")
-        #await mone.edit(
-            #f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
-        #)
+        # await mone.edit(
+        # f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+        # )
     elif input_str:
         start = datetime.now()
         if "|" in input_str:
@@ -151,12 +149,12 @@ async def _(event):  # sourcery no-metrics
                 oldmsg = current_message
             await asyncio.sleep(1)
         end = datetime.now()
-        ms = (end - start).seconds
+        (end - start).seconds
         if downloader.isSuccessful():
-        	print("sukses download")
-            #await mone.edit(
-                #f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded file location :- ** `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
-            #)
+            print("sukses download")
+            # await mone.edit(
+            # f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded file location :- ** `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
+            # )
         else:
             await mone.edit("Incorrect URL\n {}".format(input_str))
     else:
