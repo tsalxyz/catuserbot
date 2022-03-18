@@ -72,7 +72,6 @@ wget
 youtube_dl
 yt-dlp
 youtube-search
-youtube-search-python==1.4.9
 
 git+https://github.com/sandy1709/Telethon
 git+https://github.com/goldsmith/Wikipedia
