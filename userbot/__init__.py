@@ -1,7 +1,7 @@
 import signal
 import sys
 import time
-
+import os
 import heroku3
 from pytgcalls import PyTgCalls
 
@@ -73,6 +73,14 @@ try:
 except Exception:
     HEROKU_APP = None
 
+# Picture For VCPLUGIN
+PLAY_PIC = (
+    os.environ.get("PLAY_PIC") or "https://telegra.ph/file/6213d2673486beca02967.png"
+)
+
+QUEUE_PIC = (
+    os.environ.get("QUEUE_PIC") or "https://telegra.ph/file/d6f92c979ad96b2031cba.png"
+)
 # Global Configiables
 COUNT_MSG = 0
 USERS = {}
