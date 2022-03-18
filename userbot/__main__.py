@@ -36,7 +36,7 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    idle()
+    await idle()
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("Yay your userbot is officially working.!!!")
     print(f"Congratulation, now type {cmdhr}alive to see message")
@@ -47,7 +47,6 @@ async def startup_process():
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
     return
-
 
 catub.loop.run_until_complete(startup_process())
 
