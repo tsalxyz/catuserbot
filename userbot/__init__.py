@@ -81,7 +81,7 @@ except Exception:
 # 'bot' variable
 if Config.STRING_SESSION:
     session = StringSession(str(Config.STRING_SESSION))
-    bot = TelegramClient(
+    sxyz = TelegramClient(
         session=session,
         api_id=Config.APP_ID,
         api_hash=Config.API_HASH,
@@ -89,7 +89,7 @@ if Config.STRING_SESSION:
         auto_reconnect=True,
         connection_retries=None,
     )
-    call_py = PyTgCalls(bot)
+    call_py = PyTgCalls(sxyz)
 
 # Picture For VCPLUGIN
 PLAY_PIC = (
