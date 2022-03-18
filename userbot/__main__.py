@@ -4,7 +4,7 @@ from pytgcalls import idle
 
 import userbot
 from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-from userbot.__init__ import call_py
+from userbot.__init-- import
 
 from .Config import Config
 from .core.logger import logging
@@ -46,7 +46,6 @@ async def startup_process():
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
-    await call_py.start()
     await idle()
     return
 
