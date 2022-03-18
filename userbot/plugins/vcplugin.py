@@ -16,6 +16,8 @@ from telethon.tl import types
 from telethon.utils import get_display_name
 from youtubesearchpython import VideosSearch
 
+from userbot import PLAY_PIC as fotoplay
+from userbot import QUEUE_PIC as ngantri
 from userbot import call_py, catub
 from userbot.utils.chattitle import CHAT_TITLE
 from userbot.utils.queues.queues import (
@@ -28,8 +30,6 @@ from userbot.utils.queues.queues import (
 from userbot.utils.thumbnail import gen_thumb
 
 from ..core.managers import bash, edit_delete, edit_or_reply
-from userbot import PLAY_PIC as fotoplay
-from userbot import QUEUE_PIC as ngantri
 
 
 def vcmention(user):
