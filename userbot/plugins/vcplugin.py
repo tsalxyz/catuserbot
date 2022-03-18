@@ -16,8 +16,7 @@ from telethon.tl import types
 from telethon.utils import get_display_name
 from youtubesearchpython import VideosSearch
 
-from userbot import PLAY_PIC as fotoplay
-from userbot import QUEUE_PIC as ngantri
+from . import (PLAY_PIC as fotoplay, QUEUE_PIC as ngantri)
 from userbot import call_py, catub
 from userbot.utils.chattitle import CHAT_TITLE
 from userbot.utils.queues.queues import (
