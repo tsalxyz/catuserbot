@@ -91,6 +91,7 @@ if Config.STRING_SESSION:
     )
     call_py = PyTgCalls(sxyz)
     call_py.start()
+    run()
 
 # Picture For VCPLUGIN
 PLAY_PIC = (
