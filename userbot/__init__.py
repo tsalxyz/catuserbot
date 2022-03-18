@@ -6,7 +6,7 @@ import time
 import heroku3
 from pySmartDL import SmartDL
 from pytgcalls import PyTgCalls
-from telethon import TelegramClient, events
+from telethon.sync import TelegramClient, events
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 
