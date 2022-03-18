@@ -139,8 +139,14 @@ class Config(object):
     # Deepai value can get from https://deepai.org/
     DEEP_AI = os.environ.get("DEEP_AI", None)
     # Picture For VCPLUGIN
-    PLAY_PIC = ( os.environ.get("PLAY_PIC") or "https://telegra.ph/file/6213d2673486beca02967.png") 
-    QUEUE_PIC = ( os.environ.get("QUEUE_PIC") or "https://telegra.ph/file/d6f92c979ad96b2031cba.png")
+    PLAY_PIC = (
+        os.environ.get("PLAY_PIC")
+        or "https://telegra.ph/file/6213d2673486beca02967.png"
+    )
+    QUEUE_PIC = (
+        os.environ.get("QUEUE_PIC")
+        or "https://telegra.ph/file/d6f92c979ad96b2031cba.png"
+    )
     # DO NOT EDIT BELOW THIS LINE IF YOU DO NOT KNOW WHAT YOU ARE DOING
     # TG API limit. A message can have maximum 4096 characters!
     MAX_MESSAGE_SIZE_LIMIT = 4095
