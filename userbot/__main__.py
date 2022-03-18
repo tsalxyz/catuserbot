@@ -2,7 +2,7 @@ import sys
 
 import userbot
 from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-
+from pytgcalls import idle
 from .Config import Config
 from .core.logger import logging
 from .core.session import catub
@@ -47,7 +47,7 @@ async def startup_process():
 
 
 catub.loop.run_until_complete(startup_process())
-
+idle()
 
 if len(sys.argv) not in (1, 3, 4):
     catub.disconnect()
