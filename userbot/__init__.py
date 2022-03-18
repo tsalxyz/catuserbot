@@ -5,7 +5,10 @@ import time
 
 import heroku3
 from pytgcalls import PyTgCalls
-
+from telethon.sync import TelegramClient, custom, events
+from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
+from telethon.sessions import StringSession
+from pySmartDL import SmartDL
 from .Config import Config
 from .core.logger import logging
 from .core.session import catub
@@ -73,7 +76,20 @@ try:
         HEROKU_APP = None
 except Exception:
     HEROKU_APP = None
-
+    
+# 'bot' variable
+if STRING_SESSION:
+    session = StringSession(str(STRING_SESSION))
+    bot = TelegramClient(
+        session=session,
+        app_id=APP_ID,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py = PyTgCalls(bot)
+    
 # Picture For VCPLUGIN
 PLAY_PIC = (
     os.environ.get("PLAY_PIC") or "https://telegra.ph/file/6213d2673486beca02967.png"
