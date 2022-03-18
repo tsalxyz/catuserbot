@@ -17,10 +17,8 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP
-from userbot.events import register
-from userbot.utils import edit_delete, edit_or_reply, man_cmd
+from userbot import catub
+from ..core.managers import edit_delete, edit_or_reply
 
 
 async def get_call(event):
@@ -34,8 +32,8 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@man_cmd(pattern="startvc$")
-@register(pattern=r"^\.startvcs$", sudo=True)
+@catub.cat_cmd(pattern="startvc$")
+#@register(pattern=r"^\.startvcs$", sudo=True)
 async def start_voice(c):
     me = await c.client.get_me()
     chat = await c.get_chat()
@@ -52,8 +50,8 @@ async def start_voice(c):
         await edit_delete(c, f"**ERROR:** `{ex}`")
 
 
-@man_cmd(pattern="stopvc$")
-@register(pattern=r"^\.stopvcs$", sudo=True)
+@catub.cat_cmd(pattern="stopvc$")
+#@register(pattern=r"^\.stopvcs$", sudo=True)
 async def stop_voice(c):
     me = await c.client.get_me()
     chat = await c.get_chat()
@@ -70,7 +68,7 @@ async def stop_voice(c):
         await edit_delete(c, f"**ERROR:** `{ex}`")
 
 
-@man_cmd(pattern="vcinvite")
+@catub.cat_cmd(pattern="vcinvite")
 async def _(c):
     xxnx = await edit_or_reply(c, "`Inviting Members to Voice Chat...`")
     users = []
@@ -88,8 +86,8 @@ async def _(c):
     await xxnx.edit(f"`{z}` **Orang Berhasil diundang ke VCG**")
 
 
-@man_cmd(pattern="vctitle(?: |$)(.*)")
-@register(pattern=r"^\.cvctitle$", sudo=True)
+@catub.cat_cmd(pattern="vctitle(?: |$)(.*)")
+#@register(pattern=r"^\.cvctitle$", sudo=True)
 async def change_title(e):
     title = e.pattern_match.group(1)
     me = await e.client.get_me()
@@ -108,19 +106,3 @@ async def change_title(e):
         await edit_or_reply(e, f"**Berhasil Mengubah Judul VCG Menjadi** `{title}`")
     except Exception as ex:
         await edit_delete(e, f"**ERROR:** `{ex}`")
-
-
-CMD_HELP.update(
-    {
-        "vcg": f"**Plugin : **`vcg`\
-        \n\n  •  **Syntax :** `{cmd}startvc`\
-        \n  •  **Function : **Untuk Memulai voice chat group\
-        \n\n  •  **Syntax :** `{cmd}stopvc`\
-        \n  •  **Function : **Untuk Memberhentikan voice chat group\
-        \n\n  •  **Syntax :** `{cmd}vctitle` <title vcg>\
-        \n  •  **Function : **Untuk Mengubah title/judul voice chat group\
-        \n\n  •  **Syntax :** `{cmd}vcinvite`\
-        \n  •  **Function : **Mengundang Member group ke voice chat group\
-    "
-    }
-)
