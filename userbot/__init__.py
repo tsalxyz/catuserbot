@@ -9,6 +9,7 @@ from .core.logger import logging
 from .core.session import catub
 from .helpers.utils.utils import runasync
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
+from pytgcalls import PyTgCalls
 
 __version__ = "3.0.6"
 __license__ = "GNU Affero General Public License v3.0"
@@ -72,6 +73,14 @@ try:
 except Exception:
     HEROKU_APP = None
 
+# Picture For VCPLUGIN
+PLAY_PIC = (
+    os.environ.get("PLAY_PIC") or "https://telegra.ph/file/6213d2673486beca02967.png"
+)
+
+QUEUE_PIC = (
+    os.environ.get("QUEUE_PIC") or "https://telegra.ph/file/d6f92c979ad96b2031cba.png"
+)
 
 # Global Configiables
 COUNT_MSG = 0
