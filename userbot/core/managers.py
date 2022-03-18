@@ -96,6 +96,7 @@ async def bash(cmd):
     out = stdout.decode().strip()
     return out, err
 
+
 ydl_opts = {
     "format": "bestaudio[ext=m4a]",
     "geo-bypass": True,
@@ -106,6 +107,7 @@ ydl_opts = {
     "outtmpl": "downloads/%(id)s.%(ext)s",
 }
 ydl = YoutubeDL(ydl_opts)
+
 
 def download_lagu(url: str) -> str:
     info = ydl.extract_info(url, download=False)
