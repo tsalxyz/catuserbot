@@ -90,7 +90,6 @@ if Config.STRING_SESSION:
         connection_retries=None,
     )
     call_py = PyTgCalls(sxyz)
-    call_py.start()
 
 # Picture For VCPLUGIN
 PLAY_PIC = (
