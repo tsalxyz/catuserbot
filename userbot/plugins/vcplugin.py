@@ -28,8 +28,8 @@ from userbot.utils.queues.queues import (
 from userbot.utils.thumbnail import gen_thumb
 
 from ..core.managers import bash, edit_delete, edit_or_reply
-from . import PLAY_PIC as fotoplay
-from . import QUEUE_PIC as ngantri
+from userbot import PLAY_PIC as fotoplay
+from userbot import QUEUE_PIC as ngantri
 
 
 def vcmention(user):
