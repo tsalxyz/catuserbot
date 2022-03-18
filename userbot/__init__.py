@@ -1,7 +1,8 @@
+import os
 import signal
 import sys
 import time
-import os
+
 import heroku3
 from pytgcalls import PyTgCalls
 
