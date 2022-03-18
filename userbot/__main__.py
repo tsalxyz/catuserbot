@@ -26,7 +26,6 @@ cmdhr = Config.COMMAND_HAND_LER
 try:
     LOGS.info("Starting Userbot")
     catub.loop.run_until_complete(setup_bot())
-    idle()
     LOGS.info("TG Bot Startup Completed")
 except Exception as e:
     LOGS.error(f"{e}")
@@ -37,6 +36,7 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
+    idle()
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("Yay your userbot is officially working.!!!")
     print(f"Congratulation, now type {cmdhr}alive to see message")
