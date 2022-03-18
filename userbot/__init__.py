@@ -82,8 +82,8 @@ if Config.STRING_SESSION:
     session = StringSession(str(Config.STRING_SESSION))
     bot = TelegramClient(
         session=session,
-        app_id=APP_ID,
-        api_hash=API_HASH,
+        app_id=Config.APP_ID,
+        api_hash=Config.API_HASH,
         connection=ConnectionTcpAbridged,
         auto_reconnect=True,
         connection_retries=None,
