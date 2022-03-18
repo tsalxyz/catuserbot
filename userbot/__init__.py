@@ -78,8 +78,8 @@ except Exception:
     HEROKU_APP = None
     
 # 'bot' variable
-if STRING_SESSION:
-    session = StringSession(str(STRING_SESSION))
+if Config.STRING_SESSION:
+    session = StringSession(str(Config.STRING_SESSION))
     bot = TelegramClient(
         session=session,
         app_id=APP_ID,
