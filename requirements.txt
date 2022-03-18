@@ -9,6 +9,7 @@ cowpy
 dataclasses
 DateTime
 emoji
+ffmpeg-python
 fonttools
 geopy
 git+https://github.com/yt-dlp/yt-dlp@master
