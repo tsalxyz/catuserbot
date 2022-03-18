@@ -4,7 +4,7 @@ from pytgcalls import idle
 
 import userbot
 from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-
+form . import call_py
 from .Config import Config
 from .core.logger import logging
 from .core.session import catub
@@ -42,6 +42,7 @@ async def startup_process():
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
+    await call_py.start()
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
