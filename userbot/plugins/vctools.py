@@ -18,6 +18,7 @@ from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from userbot import catub
+
 from ..core.managers import edit_delete, edit_or_reply
 
 
@@ -33,7 +34,7 @@ def user_list(l, n):
 
 
 @catub.cat_cmd(pattern="startvc$")
-#@register(pattern=r"^\.startvcs$", sudo=True)
+# @register(pattern=r"^\.startvcs$", sudo=True)
 async def start_voice(c):
     me = await c.client.get_me()
     chat = await c.get_chat()
@@ -51,7 +52,7 @@ async def start_voice(c):
 
 
 @catub.cat_cmd(pattern="stopvc$")
-#@register(pattern=r"^\.stopvcs$", sudo=True)
+# @register(pattern=r"^\.stopvcs$", sudo=True)
 async def stop_voice(c):
     me = await c.client.get_me()
     chat = await c.get_chat()
@@ -87,7 +88,7 @@ async def _(c):
 
 
 @catub.cat_cmd(pattern="vctitle(?: |$)(.*)")
-#@register(pattern=r"^\.cvctitle$", sudo=True)
+# @register(pattern=r"^\.cvctitle$", sudo=True)
 async def change_title(e):
     title = e.pattern_match.group(1)
     me = await e.client.get_me()
