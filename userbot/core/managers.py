@@ -3,6 +3,7 @@ import os
 
 from ..helpers.utils.format import md_to_text, paste_message
 from .data import _sudousers_list
+from yt_dlp import YoutubeDL
 
 
 # https://t.me/c/1220993104/623253
