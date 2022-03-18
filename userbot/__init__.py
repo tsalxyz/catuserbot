@@ -3,13 +3,13 @@ import sys
 import time
 
 import heroku3
+from pytgcalls import PyTgCalls
 
 from .Config import Config
 from .core.logger import logging
 from .core.session import catub
 from .helpers.utils.utils import runasync
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
-from pytgcalls import PyTgCalls
 
 __version__ = "3.0.6"
 __license__ = "GNU Affero General Public License v3.0"
