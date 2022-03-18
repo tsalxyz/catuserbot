@@ -11,6 +11,7 @@ DateTime
 emoji
 fonttools
 geopy
+git+https://github.com/yt-dlp/yt-dlp@master
 gitpython
 glitch_this
 google-api-python-client
@@ -68,6 +69,8 @@ vcsi
 wand
 wget
 youtube_dl
+youtube-search
+youtube-search-python==1.4.9
 
 git+https://github.com/sandy1709/Telethon
 git+https://github.com/goldsmith/Wikipedia
