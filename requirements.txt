@@ -69,6 +69,7 @@ vcsi
 wand
 wget
 youtube_dl
+yt-dlp
 youtube-search
 youtube-search-python==1.4.9
 
