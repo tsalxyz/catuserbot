@@ -1,23 +1,11 @@
 import asyncio
-import os
 import hashlib
+import os
 import os.path
-import shlex
+from typing import Union
 
-from emoji import get_emoji_regexp
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-from html_telegraph_poster import TelegraphPoster
-from PIL import Image
-from telethon.tl.functions.channels import GetParticipantRequest
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantCreator,
-    DocumentAttributeFilename,
-)
 from yt_dlp import YoutubeDL
-from os.path import basename
-from typing import Optional, Union
+
 from ..helpers.utils.format import md_to_text, paste_message
 from .data import _sudousers_list
 
@@ -101,12 +89,14 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
     await asyncio.sleep(time)
     return await catevent.delete()
 
+
 async def md5(fname: str) -> str:
     hash_md5 = hashlib.md5()
     with open(fname, "rb") as f:
         for chunk in iter(lambda: f.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
+
 
 def humanbytes(size: Union[int, float]) -> str:
     if size is None or isinstance(size, str):
@@ -119,6 +109,7 @@ def humanbytes(size: Union[int, float]) -> str:
         size /= power
         raised_to_pow += 1
     return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
+
 
 async def bash(cmd):
     process = await asyncio.create_subprocess_shell(
