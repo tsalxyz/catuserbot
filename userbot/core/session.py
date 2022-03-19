@@ -45,7 +45,7 @@ catub.tgbot = tgbot = CatUserBotClient(
 
 if Config.STRING_SESSION:
     session = StringSession(str(Config.STRING_SESSION))
-    catub = CatUserBotClient(
+    sxyz = CatUserBotClient(
         session=session,
         api_id=Config.APP_ID,
         api_hash=Config.API_HASH,
@@ -55,4 +55,4 @@ if Config.STRING_SESSION:
         auto_reconnect=True,
         connection_retries=None,
     )
-    call_py = PyTgCalls(catub)
+    call_py = PyTgCalls(sxyz)
