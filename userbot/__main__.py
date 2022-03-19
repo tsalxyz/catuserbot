@@ -33,7 +33,6 @@ except Exception as e:
 
 
 async def startup_process():
-    await catub.start()
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
