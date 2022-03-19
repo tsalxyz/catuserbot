@@ -78,18 +78,6 @@ try:
 except Exception:
     HEROKU_APP = None
 
-# 'bot' variable
-if Config.STRING_SESSION:
-    session = StringSession(str(Config.STRING_SESSION))
-    sxyz = TelegramClient(
-        session=session,
-        api_id=Config.APP_ID,
-        api_hash=Config.API_HASH,
-        connection=ConnectionTcpAbridged,
-        auto_reconnect=True,
-        connection_retries=None,
-    )
-    call_py = PyTgCalls(sxyz)
 
 # Picture For VCPLUGIN
 PLAY_PIC = (
