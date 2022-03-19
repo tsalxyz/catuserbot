@@ -33,9 +33,11 @@ except Exception as e:
 
 
 async def startup_process():
+    await call_py.start()
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
+    await idle()
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("Yay your userbot is officially working.!!!")
     print(f"Congratulation, now type {cmdhr}alive to see message")
@@ -45,8 +47,6 @@ async def startup_process():
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
-    await call_py.start()
-    await idle()
     return
 
 
