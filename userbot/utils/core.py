@@ -13,7 +13,7 @@ if STRING_SESSION:
     bot = TelegramClient(
         session=session,
         api_id=Config.APP_ID,
-        api_hash=API_HASH,
+        api_hash=Config.API_HASH,
         connection=ConnectionTcpAbridged,
         connection_retries=None,
         auto_reconnect=True,
