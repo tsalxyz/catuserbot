@@ -1,5 +1,6 @@
-import sys
 import asyncio
+import sys
+
 from pytgcalls import idle
 
 import userbot
@@ -50,7 +51,7 @@ async def startup_process():
     return
 
 
-#catub.loop.run_until_complete(startup_process())
+# catub.loop.run_until_complete(startup_process())
 if __name__ == "session":
     loop = asyncio.get_event_loop()
     loop.run_until_complete(startup_process())
