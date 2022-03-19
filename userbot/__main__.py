@@ -7,7 +7,7 @@ from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from .Config import Config
 from .core.logger import logging
-from .core.session import call_py
+from .core.session import call_py, catub
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
@@ -45,16 +45,17 @@ async def startup_process():
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
+    await call_py.start()
     await idle()
     return
 
 
-call_py.loop.run_until_complete(startup_process())
+catub.loop.run_until_complete(startup_process())
 
 if len(sys.argv) not in (1, 3, 4):
-    call_py.disconnect()
+    catub.disconnect()
 else:
     try:
-        call_py.run_until_disconnected()
+        catub.run_until_disconnected()
     except ConnectionError:
         pass
