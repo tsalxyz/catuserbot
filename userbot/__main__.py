@@ -35,6 +35,8 @@ except Exception as e:
 
 async def startup_process():
     await verifyLoggerGroup()
+    await call_py.start()
+    await idle()
     await load_plugins("plugins")
     await load_plugins("assistant")
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
@@ -46,8 +48,6 @@ async def startup_process():
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
-    await call_py.start()
-    await idle()
     return
 
 
