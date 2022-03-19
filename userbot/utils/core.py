@@ -1,7 +1,7 @@
 from pytgcalls import PyTgCalls
-from telethon.sync import TelegramClient
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
+from telethon.sync import TelegramClient
 
 if STRING_SESSION:
     session = StringSession(str(STRING_SESSION))
