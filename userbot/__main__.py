@@ -36,7 +36,6 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    await idle()
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("Yay your userbot is officially working.!!!")
     print(f"Congratulation, now type {cmdhr}alive to see message")
@@ -50,7 +49,7 @@ async def startup_process():
 
 
 catub.loop.run_until_complete(startup_process())
-
+idle()
 if len(sys.argv) not in (1, 3, 4):
     catub.disconnect()
 else:
