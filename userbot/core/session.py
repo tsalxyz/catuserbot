@@ -17,7 +17,7 @@ else:
     session = "catuserbot"
 
 try:
-    sxyz = CatUserBotClient(
+    catub = CatUserBotClient(
         session=session,
         api_id=Config.APP_ID,
         api_hash=Config.API_HASH,
@@ -27,7 +27,7 @@ try:
         auto_reconnect=True,
         connection_retries=None,
     )
-    catub = PyTgCalls(sxyz)
+    sxyz = PyTgCalls(catub)
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
