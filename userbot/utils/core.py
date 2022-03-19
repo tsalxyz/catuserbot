@@ -15,4 +15,3 @@ if STRING_SESSION:
         api_hash=API_HASH,
     )
     call_py = PyTgCalls(bot)
-    
