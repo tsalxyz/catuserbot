@@ -21,4 +21,4 @@ if STRING_SESSION:
     call_py = PyTgCalls(bot, overload_quiet_mode=True)
     with bot as app:
         me_user = app.get_me()
-    run()
+    call_py.start()
