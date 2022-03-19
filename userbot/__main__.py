@@ -25,7 +25,7 @@ cmdhr = Config.COMMAND_HAND_LER
 
 try:
     LOGS.info("Starting Userbot")
-    call_py.loop.run_until_complete(setup_bot())
+    catub.loop.run_until_complete(setup_bot())
     LOGS.info("TG Bot Startup Completed")
 except Exception as e:
     LOGS.error(f"{e}")
