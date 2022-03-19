@@ -1,11 +1,11 @@
 import sys
 
+from pytgcalls import PyTgCalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 
 from ..Config import Config
 from .client import CatUserBotClient
-from pytgcalls import PyTgCalls
 
 __version__ = "2.10.6"
 
