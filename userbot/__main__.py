@@ -4,11 +4,10 @@ from pytgcalls import idle
 
 import userbot
 from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-from userbot.utils.core import call_py
 
 from .Config import Config
 from .core.logger import logging
-from .core.session import catub
+from .core.session import call_py
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
@@ -26,7 +25,7 @@ cmdhr = Config.COMMAND_HAND_LER
 
 try:
     LOGS.info("Starting Userbot")
-    catub.loop.run_until_complete(setup_bot())
+    call_py.loop.run_until_complete(setup_bot())
     LOGS.info("TG Bot Startup Completed")
 except Exception as e:
     LOGS.error(f"{e}")
@@ -46,18 +45,16 @@ async def startup_process():
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
-    await call_py.start()
-    LOGS.info("[INFO]: PY-TGCALLS CLIENT STARTED !")
     await idle()
     return
 
 
-catub.loop.run_until_complete(startup_process())
+call_py.loop.run_until_complete(startup_process())
 
 if len(sys.argv) not in (1, 3, 4):
-    catub.disconnect()
+    call_py.disconnect()
 else:
     try:
-        catub.run_until_disconnected()
+        call_py.run_until_disconnected()
     except ConnectionError:
         pass
