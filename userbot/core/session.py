@@ -5,6 +5,7 @@ from telethon.sessions import StringSession
 
 from ..Config import Config
 from .client import CatUserBotClient
+from pytgcalls import PyTgCalls
 
 __version__ = "2.10.6"
 
@@ -26,6 +27,7 @@ try:
         auto_reconnect=True,
         connection_retries=None,
     )
+    call_py = PyTgCalls(catub)
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
