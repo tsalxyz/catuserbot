@@ -5,8 +5,7 @@ from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 from telethon.sync import TelegramClient
 
-
-APP_ID = int(os.environ.get("APP_ID", 6)) 
+APP_ID = int(os.environ.get("APP_ID", 6))
 API_HASH = os.environ.get("API_HASH") or None
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
 if STRING_SESSION:
