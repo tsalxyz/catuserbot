@@ -19,7 +19,7 @@ if STRING_SESSION:
         auto_reconnect=True,
     )
     call_py = PyTgCalls(bot, overload_quiet_mode=True)
-    with bot as app: 
+    with bot as app:
         me_user = app.get_me()
     call_py.start()
     run()
