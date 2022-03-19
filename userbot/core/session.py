@@ -1,6 +1,6 @@
 import sys
 
-from pytgcalls import PyTgCalls
+#from pytgcalls import PyTgCalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 
@@ -27,7 +27,7 @@ try:
         auto_reconnect=True,
         connection_retries=None,
     )
-    sxyz = PyTgCalls(catub)
+    #sxyz = PyTgCalls(catub)
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
