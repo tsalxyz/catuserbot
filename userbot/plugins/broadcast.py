@@ -34,7 +34,7 @@ async def _(event):
             "Please reply message",
             parse_mode=_format.parse_pre,
         )
-    xyz = await event.edit_or_reply("`Processing to broadcast...`")
+    xyz = await event.client.send_message("`Processing to broadcast...`")
     i = 0
     async for chat in event.client.iter_dialogs():
         if chat.is_group:
