@@ -47,7 +47,9 @@ async def _(event):
     i = 0
     # chats = await all_groups_id(reply)
     async for chat in event.client.iter_dialogs():
-        await event.client.send_message(chat.chat_id, reply)
+      if chat.is_group and not chat.entity.bot:
+        chat = chat.id
+        await event.client.send_message(chat, reply)
         await sleep(0.5)
         i += 1
         # fwd_message = await event.client.forward_messages(reply, silent=True)
