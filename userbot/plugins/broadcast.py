@@ -17,20 +17,11 @@ plugin_category = "tools"
 LOGS = logging.getLogger(__name__)
 
 
-async def all_groups_id(cat):
-    catgroups = []
-    async for dialog in cat.client.iter_dialogs():
-        entity = dialog.entity
-        if isinstance(entity, Channel) and entity.megagroup:
-            catgroups.append(entity.id)
-    return catgroups
-
-
 @catub.cat_cmd(
     pattern="bcv2$",
     command=("broadcastV2", plugin_category),
     info={
-        "header": "To boradcastV2 for the message. that is will delete old message and send new message where you can see how any people saw your message",
+        "header": "To boradcastV2 for the message. send new message and reply",
         "usage": "{tr}bcv2",
         "examples": "{tr}bcv2 <reply>",
     },
@@ -47,7 +38,7 @@ async def _(event):
     i = 0
     # chats = await all_groups_id(reply)
     async for chat in event.client.iter_dialogs():
-        if chat.is_group and not chat.entity.bot:
+        if chat.is_group:
             chat = chat.id
             await event.client.send_message(chat, reply)
             await sleep(0.5)
