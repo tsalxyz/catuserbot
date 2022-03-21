@@ -48,6 +48,120 @@ async def get_font_file(client, channel_id, search_kw=""):
 
 
 @catub.cat_cmd(
+    pattern="(|h)penguin(?:\s|$)([\s\S]*)",
+    command=("penguin", plugin_category),
+    info={
+        "header": "To make penguin meme sticker. ",
+        "flags": {
+            "h": "To create penguin sticker with highligted text.",
+        },
+        "usage": [
+            "{tr}penguin <text/reply to msg>",
+            "{tr}hpenguin <text/reply to msg>",
+        ],
+        "examples": [
+            "{tr}penguin Asu",
+            "{tr}hpenguin Asu",
+        ],
+    },
+)
+async def penguin(event):
+    "Make a cool penguin text sticker"
+    cmd = event.pattern_match.group(1).lower()
+    text = event.pattern_match.group(2)
+    reply_to_id = await reply_id(event)
+    if not text and event.is_reply:
+        text = (await event.get_reply_message()).message
+    if not text:
+        return await edit_delete(
+            event, "What is penguin supposed to say? Give some text."
+        )
+    await edit_delete(event, "Wait, processing.....")
+    if not os.path.isdir("./temp"):
+        os.mkdir("./temp")
+    temp_name = "./temp/peguin_temp.jpg"
+    file_name = "./temp/penguin.jpg"
+    templait = urllib.request.urlretrieve(
+        "https://telegra.ph/file/ee1fc91bbaef2cc808c7c.png", temp_name
+    )
+    text = deEmojify(text)
+    font, wrap = (90, 4) if len(text) < 50 else (70, 4.5)
+    bg, fg, alpha, ls = (
+        ("black", "white", 255, "-20") if cmd == "h" else ("white", "black", 0, "-40")
+    )
+    higlighted_text(
+        temp_name,
+        text,
+        file_name,
+        text_wrap=wrap,
+        font_size=font,
+        linespace=ls,
+        position=(0, 10),
+        align="left",
+        background=bg,
+        foreground=fg,
+        transparency=alpha,
+    )
+    cat = convert_tosticker(file_name)
+    await event.client.send_file(
+        event.chat_id, cat, reply_to=reply_to_id, force_document=False
+    )
+    await event.delete()
+    for files in (temp_name, file_name):
+        if files and os.path.exists(files):
+            os.remove(files)
+
+@catub.cat_cmd(
+    pattern="ist ?(.*)",
+    command=("ist", plugin_category),
+    info={
+        "header": "Inline Write-On Sticker",
+        "usage": [
+            "{tr}ist <your text>",
+        ],
+    },
+)
+async def isong(event):
+    if event.fwd_from: 
+        return
+    bot = "QuotAfBot"
+    text = event.pattern_match.group(1)
+    reply_to_id = await reply_id(event)
+    if not text:
+        await edit_delete(event, "`Give me a text`")
+    else:
+        await event.delete()
+        run = await event.client.inline_query(bot, text)
+        result = await run[1].click("me")
+        await event.client.send_message(event.chat_id, result, reply_to=reply_to_id)
+        await result.delete()
+
+@catub.cat_cmd(
+    pattern="gsticker ?(.*)",
+    command=("gsticker", plugin_category),
+    info={
+        "header": " To make animated google sticker",
+        "usage": [
+            "{tr}gsticker <your text>",
+        ],
+    },
+)
+async def app(deep):
+    if deep.fwd_from:
+        return
+    bot = "@GooglaxBot "
+    text = deep.pattern_match.group(1)
+    reply_to_id = await reply_id(deep)
+    if not text:
+        return await edit_delete(deep, "`Give me some text rip life, Lmao`")
+    else:
+    	    await deep.delete()
+    	    run = await deep.client.inline_query(bot, text)
+    	    result = await run[0].click("me")
+    	    await result.delete()
+    	    await deep.client.send_message(deep.chat_id, result, reply_to=reply_to_id)
+
+@catub.cat_cmd(
     pattern="(?:st|sttxt)(?:\s|$)([\s\S]*)",
     command=("sttxt", plugin_category),
     info={
