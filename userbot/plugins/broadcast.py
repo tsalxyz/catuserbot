@@ -1,5 +1,6 @@
 import base64
 from asyncio import sleep
+import asyncio
 
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import Channel
@@ -46,7 +47,7 @@ async def _(event):
         )
     i = 0
     # chats = await all_groups_id(reply)
-    for chat in event.client.iter_dialogs():
+    async for chat in event.client.iter_dialogs():
         await event.client.send_message(chat.chat_id, reply)
         await sleep(0.5)
         i += 1
