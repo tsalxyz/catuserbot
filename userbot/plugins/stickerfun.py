@@ -111,6 +111,7 @@ async def penguin(event):
         if files and os.path.exists(files):
             os.remove(files)
 
+
 @catub.cat_cmd(
     pattern="ist ?(.*)",
     command=("ist", plugin_category),
@@ -122,7 +123,7 @@ async def penguin(event):
     },
 )
 async def isong(event):
-    if event.fwd_from: 
+    if event.fwd_from:
         return
     bot = "QuotAfBot"
     text = event.pattern_match.group(1)
@@ -135,6 +136,7 @@ async def isong(event):
         result = await run[1].click("me")
         await event.client.send_message(event.chat_id, result, reply_to=reply_to_id)
         await result.delete()
+
 
 @catub.cat_cmd(
     pattern="gsticker ?(.*)",
@@ -155,11 +157,12 @@ async def app(deep):
     if not text:
         return await edit_delete(deep, "`Give me some text rip life, Lmao`")
     else:
-    	    await deep.delete()
-    	    run = await deep.client.inline_query(bot, text)
-    	    result = await run[0].click("me")
-    	    await result.delete()
-    	    await deep.client.send_message(deep.chat_id, result, reply_to=reply_to_id)
+        await deep.delete()
+        run = await deep.client.inline_query(bot, text)
+        result = await run[0].click("me")
+        await result.delete()
+        await deep.client.send_message(deep.chat_id, result, reply_to=reply_to_id)
+
 
 @catub.cat_cmd(
     pattern="(?:st|sttxt)(?:\s|$)([\s\S]*)",
