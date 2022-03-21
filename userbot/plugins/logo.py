@@ -12,7 +12,7 @@ import PIL
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image, ImageDraw, ImageFont
-
+from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
 from userbot import catub
 
 from ..core.managers import edit_delete, edit_or_reply
