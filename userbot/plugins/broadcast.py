@@ -2,6 +2,7 @@ import base64
 from asyncio import sleep
 
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from telethon.tl.types import Channel, MessageMediaWebPage
 from telethon.utils import get_display_name
 
 from .. import catub
@@ -14,6 +15,14 @@ from . import BOTLOG, BOTLOG_CHATID
 plugin_category = "tools"
 
 LOGS = logging.getLogger(__name__)
+
+async def all_groups_id(cat):
+    catgroups = []
+    async for dialog in cat.client.iter_dialogs():
+        entity = dialog.entity
+        if isinstance(entity, Channel) and entity.megagroup:
+            catgroups.append(entity.id)
+    return catgroups
 
 
 @catub.cat_cmd(
@@ -35,7 +44,7 @@ async def _(event):
             parse_mode=_format.parse_pre,
         )
     i = 0
-    chats = []
+    chats = await all_groups_id(event)
     for chat in chats:
         if int(event.chat_id) == int(chat):
             continue
