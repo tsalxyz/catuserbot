@@ -34,8 +34,8 @@ async def _(event):
             "Please reply message",
             parse_mode=_format.parse_pre,
         )
+    xyz = await event.edit_or_reply("`Processing to broadcast...`")
     i = 0
-    # chats = await all_groups_id(reply)
     async for chat in event.client.iter_dialogs():
         if chat.is_group:
             chat = chat.id
@@ -44,8 +44,7 @@ async def _(event):
             i += 1
             # fwd_message = await event.client.forward_messages(reply, silent=True)
             # await event.client.forward_messages(event.chat_id, fwd_message)
-    resultext = f"`The message was sent to {i} chats.`"
-    await edit_delete(event, resultext)
+    resultext = await xyz.edit_or_reply(f"`The message was sent to {i} chats.`")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
