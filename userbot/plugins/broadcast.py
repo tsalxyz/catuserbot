@@ -2,7 +2,7 @@ import base64
 from asyncio import sleep
 
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from telethon.tl.types import Channel, MessageMediaWebPage
+from telethon.tl.types import Channel
 from telethon.utils import get_display_name
 
 from .. import catub
@@ -15,6 +15,7 @@ from . import BOTLOG, BOTLOG_CHATID
 plugin_category = "tools"
 
 LOGS = logging.getLogger(__name__)
+
 
 async def all_groups_id(cat):
     catgroups = []
