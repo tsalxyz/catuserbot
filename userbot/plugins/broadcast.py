@@ -44,7 +44,7 @@ async def _(event):
             i += 1
             # fwd_message = await event.client.forward_messages(reply, silent=True)
             # await event.client.forward_messages(event.chat_id, fwd_message)
-    await xyz.edit_or_reply(f"`The message was sent to {i} chats.`")
+    await edit_or_reply(xyz,f"`The message was sent to {i} chats.`")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
