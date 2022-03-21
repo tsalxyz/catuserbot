@@ -21,7 +21,7 @@ from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import convert_toimage, reply_id
 
 # ======================================================================================================================================================================================
-
+PICS_STR = []
 vars_list = {
     "lbg": "LOGO_BACKGROUND",
     "lfc": "LOGO_FONT_COLOR",
@@ -39,6 +39,76 @@ plugin_category = "extra"
 
 
 @catub.cat_cmd(
+    pattern="glogo(?: |$)([\s\S]*)"
+)
+async def Logo(event):
+    evxnt = await event.edit("Processing ...")
+    text = event.pattern_match.group(1)
+    if not text:
+        await evxnt.edit("Give some text to make a logo")
+        return
+    fnt = await get_font_file(event.client, "@fontsssxyzrobot")
+    if event.reply_to_msg_id:
+        rply = await event.get_reply_message()
+        logo_ = await rply.download_media()
+    else:
+        async for i in bot.iter_messages(f"@sxyzrobotlogo", filter=InputMessagesFilterPhotos):
+            PICS_STR.append(i)
+        pic = random.choice(PICS_STR)
+        logo_ = await pic.download_media()
+    if len(text) <= 8:
+        font_size_ = 100
+        strik = 10
+    elif len(text) >= 9:
+        font_size_ = 50
+        strik = 5
+    else:
+        font_size_ = 120
+        strik = 20
+
+    img = Image.open(logo_)
+    draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype(fnt, font_size_)
+    image_widthz, image_heightz = img.size
+    w, h = draw.textsize(text, font=font)
+    h += int(h * 0.21)
+    image_width, image_height = img.size
+    draw.text(
+        ((image_width - w) / 2, (image_height - h) / 2),
+        text,
+        font=font,
+        fill=(255, 255, 255),
+    )
+    w_ = (image_width - w) / 2
+    h_ = (image_height - h) / 2
+    draw.text(
+        (w_, h_), text, font=font, fill="white", stroke_width=strik, stroke_fill="black"
+    )
+    file_name = "Logo.png"
+    img.save(
+        file_name,
+        "png",
+    )
+    await bot.send_file(
+        event.chat_id, file_name, caption=f"Successfully generate logo"
+    )
+    await evxnt.delete()
+    try:
+        os.remove(file_name)
+        os.remove(fnt)
+        os.remove(logo_)
+    except:
+        pass
+
+
+async def get_font_file(client, channel_id):
+    font_file_message_s = await client.get_messages(
+        entity=channel_id, filter=InputMessagesFilterDocument, limit=None
+    )
+    font_file_message = random.choice(font_file_message_s)
+    return await client.download_media(font_file_message)
+
+@catub.cat_cmd(
     pattern="(|s)logo(?: |$)([\s\S]*)",
     command=("logo", plugin_category),
     info={
@@ -50,10 +120,12 @@ plugin_category = "extra"
         "usage": [
             "{tr}logo <text>",
             "{tr}slogo <text>",
+            "{tr}glogo <text>",
         ],
         "examples": [
             "{tr}logo Cat",
             "{tr}slogo Cat",
+            "{tr}glogo Cat",
         ],
     },
 )
