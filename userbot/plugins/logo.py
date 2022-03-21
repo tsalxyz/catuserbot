@@ -7,6 +7,7 @@ import asyncio
 import os
 import re
 import urllib
+import random
 
 import PIL
 import requests
