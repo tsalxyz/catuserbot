@@ -45,7 +45,7 @@ async def _(event):
             parse_mode=_format.parse_pre,
         )
     i = 0
-    #chats = await all_groups_id(reply)
+    # chats = await all_groups_id(reply)
     for chat in event.client.iter_dialogs():
         await event.client.send_message(chat.chat_id, reply)
         await sleep(0.5)
