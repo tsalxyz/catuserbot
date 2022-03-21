@@ -2,7 +2,6 @@ import base64
 from asyncio import sleep
 
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from telethon.tl.types import Channel
 from telethon.utils import get_display_name
 
 from .. import catub
