@@ -38,9 +38,7 @@ vars_list = {
 plugin_category = "extra"
 
 
-@catub.cat_cmd(
-    pattern="glogo(?: |$)([\s\S]*)"
-)
+@catub.cat_cmd(pattern="glogo(?: |$)([\s\S]*)")
 async def Logo(event):
     evxnt = await event.edit("Processing ...")
     text = event.pattern_match.group(1)
@@ -52,7 +50,9 @@ async def Logo(event):
         rply = await event.get_reply_message()
         logo_ = await rply.download_media()
     else:
-        async for i in bot.iter_messages(f"@sxyzrobotlogo", filter=InputMessagesFilterPhotos):
+        async for i in bot.iter_messages(
+            f"@sxyzrobotlogo", filter=InputMessagesFilterPhotos
+        ):
             PICS_STR.append(i)
         pic = random.choice(PICS_STR)
         logo_ = await pic.download_media()
@@ -89,9 +89,7 @@ async def Logo(event):
         file_name,
         "png",
     )
-    await bot.send_file(
-        event.chat_id, file_name, caption=f"Successfully generate logo"
-    )
+    await bot.send_file(event.chat_id, file_name, caption=f"Successfully generate logo")
     await evxnt.delete()
     try:
         os.remove(file_name)
@@ -107,6 +105,7 @@ async def get_font_file(client, channel_id):
     )
     font_file_message = random.choice(font_file_message_s)
     return await client.download_media(font_file_message)
+
 
 @catub.cat_cmd(
     pattern="(|s)logo(?: |$)([\s\S]*)",
