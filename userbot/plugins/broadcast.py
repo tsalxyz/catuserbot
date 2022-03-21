@@ -1,6 +1,5 @@
 import base64
 from asyncio import sleep
-import asyncio
 
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import Channel
