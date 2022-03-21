@@ -15,6 +15,42 @@ plugin_category = "tools"
 
 LOGS = logging.getLogger(__name__)
 
+@catub.cat_cmd(
+    pattern="bcv2$",
+    command=("broadcastV2", plugin_category),
+    info={
+        "header": "To boradcastV2 for the message. that is will delete old message and send new message where you can see how any people saw your message",
+        "usage": "{tr}bcv2",
+        "examples": "{tr}bcv2 <reply>",
+    },
+)
+async def _(event):
+    "To broadcastv2 for the message"
+    reply = await event.get_reply_message()
+    if not reply:
+        return await edit_delete(
+            event,
+            "Please reply message",
+            parse_mode=_format.parse_pre,
+        )
+    i = 0
+    chats = []
+    for chat in chats:
+        if int(event.chat_id) == int(chat):
+                continue
+        await event.client.forward_messages(int(chat), reply)
+        await sleep(0.5)
+        i += 1
+        #fwd_message = await event.client.forward_messages(reply, silent=True)
+        #await event.client.forward_messages(event.chat_id, fwd_message)
+    resultext = f"`The message was sent to {i} chats.`"
+    await edit_delete(event, resultext)
+    if BOTLOG:
+        await event.client.send_message(
+            BOTLOG_CHATID,
+            f"A message is broadcast to {i} chats",
+            parse_mode=_format.parse_pre,
+        )
 
 @catub.cat_cmd(
     pattern="msgto(?:\s|$)([\s\S]*)",
