@@ -113,7 +113,7 @@ async def penguin(event):
 
 
 @catub.cat_cmd(
-    pattern="ist ?(.*)",
+    pattern="(|4|3|2)ist(?:\s|$)([\s\S]*)",
     command=("ist", plugin_category),
     info={
         "header": "Inline Write-On Sticker",
