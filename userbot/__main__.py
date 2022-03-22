@@ -1,11 +1,13 @@
 import sys
-import asyncio
+
+from pytgcalls import idle
+
 import userbot
 from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-from pytgcalls import idle
+
 from .Config import Config
 from .core.logger import logging
-from .core.session import catub, calls
+from .core.session import calls, catub
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
