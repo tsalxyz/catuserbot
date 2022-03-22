@@ -7,7 +7,7 @@ from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from .Config import Config
 from .core.logger import logging
-from .core.session import calls, catub
+from .core.session import catub
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
@@ -36,7 +36,6 @@ except Exception as e:
 
 
 async def startup_process():
-    await calls.start()
     await idle()
     await verifyLoggerGroup()
     await load_plugins("plugins")
@@ -47,6 +46,7 @@ async def startup_process():
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
+    await idle()
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
