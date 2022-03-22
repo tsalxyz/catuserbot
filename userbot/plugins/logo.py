@@ -39,6 +39,34 @@ vars_list = {
 
 plugin_category = "extra"
 
+@catub.cat_cmd(
+    pattern="raesthetic$",
+    command=("Aesthetic", plugin_category),
+)
+async def being_logical(event):
+    evxnt = await event.edit("Processing ...")
+    async for i in bot.iter_messages(
+            f"@walpaper_aestetic", filter=InputMessagesFilterPhotos
+        ):
+            PICS_STR.append(i)
+        pic = random.choice(PICS_STR)
+        logo_ = await pic.download_media()
+    img = Image.open(logo_)
+    file_name = "Logo.png"
+    img.save(
+        file_name,
+        "png",
+    )
+    await bot.send_file(event.chat_id, file_name, caption=f"Successfully send random image aesthetic")
+    await evxnt.delete()
+    try:
+        os.remove(file_name)
+        os.remove(logo_)
+    except:
+        pass
+    #raw_list = await event.get_history("@walpaper_aestetic")
+    #raw_message = random.choice(raw_list)
+    #await event.edit(raw_message.image)
 
 @catub.cat_cmd(pattern="glogo(?: |$)([\s\S]*)")
 async def Logo(event):
