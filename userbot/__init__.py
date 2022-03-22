@@ -5,7 +5,6 @@ import time
 
 import heroku3
 from pySmartDL import SmartDL
-from pytgcalls import PyTgCalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 from telethon.sync import TelegramClient, events
@@ -23,14 +22,6 @@ __copyright__ = f"CatUserBot Copyright (C) 2020 - 2021  {__author__}"
 
 catub.version = __version__
 catub.tgbot.version = __version__
-logging.basicConfig(
-    filename=f"streambot-logs-{me_bot.id}.txt",
-    level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-)
-logging.getLogger("yt_dlp").setLevel(logging.ERROR)
-logging.getLogger("telethon").setLevel(logging.ERROR)
-logging.getLogger("PyTgCalls").setLevel(logging.ERROR)
 LOGS = logging.getLogger("CatUserbot")
 bot = catub
 
