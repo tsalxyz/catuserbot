@@ -12,7 +12,7 @@ from telethon.sync import TelegramClient, events
 
 from .Config import Config
 from .core.logger import logging
-from .core.session import catub, ms_user
+from .core.session import catub
 from .helpers.utils.utils import runasync
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
