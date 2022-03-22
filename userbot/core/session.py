@@ -31,8 +31,8 @@ try:
         connection_retries=None,
     )
     calls = PyTgCalls(catub)
-    #with catub as app:
-        #me_user = app.get_me()
+    # with catub as app:
+    # me_user = app.get_me()
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
