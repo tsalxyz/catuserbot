@@ -140,7 +140,7 @@ async def isong(event):
         await edit_delete(event, "`Give me a text`")
     if cmd == "":
         run = await event.client.inline_query(bot, text)
-        result = await run[1].click("me")
+        result = await run[0].click("me")
         await event.client.send_message(event.chat_id, result, reply_to=reply_to_id)
         await result.delete()
     if cmd == "2":
