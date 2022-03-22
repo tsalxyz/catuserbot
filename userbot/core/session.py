@@ -1,12 +1,14 @@
 import sys
 
+from pytgcalls import PyTgCalls
+
 # from pytgcalls import PyTgCalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
-from pytgcalls import PyTgCalls
+from telethon.sync import TelegramClient as CatUserBotClient
+
 from ..Config import Config
 from .client import CatUserBotClient
-from telethon.sync import TelegramClient as CatUserBotClient
 
 __version__ = "3.0.6"
 
@@ -29,7 +31,7 @@ try:
         connection_retries=None,
     )
     calls = PyTgCalls(catub)
-    with catub as app: 
+    with catub as app:
         me_user = app.get_me()
 except Exception as e:
     print(f"STRING_SESSION - {e}")
