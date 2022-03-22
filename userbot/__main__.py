@@ -1,11 +1,11 @@
 import sys
-
+import asyncio
 import userbot
 from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-
+from pytgcalls import idle
 from .Config import Config
 from .core.logger import logging
-from .core.session import catub
+from .core.session import catub, calls
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
@@ -34,6 +34,8 @@ except Exception as e:
 
 
 async def startup_process():
+    await calls.start()
+    await idle()
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
