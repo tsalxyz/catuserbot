@@ -3,7 +3,6 @@ import sys
 # from pytgcalls import PyTgCalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
-from telethon.sync import TelegramClient as CatUserBotClient
 
 from ..Config import Config
 from .client import CatUserBotClient
