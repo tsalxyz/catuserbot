@@ -1,7 +1,5 @@
 import sys
 
-from pytgcalls import PyTgCalls
-
 # from pytgcalls import PyTgCalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
@@ -30,7 +28,6 @@ try:
         auto_reconnect=True,
         connection_retries=None,
     )
-    calls = PyTgCalls(catub)
     # with catub as app:
     # me_user = app.get_me()
 except Exception as e:
