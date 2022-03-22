@@ -132,7 +132,7 @@ async def isong(event):
     cmd = event.pattern_match.group(1).lower()
     text = event.pattern_match.group(2)
     reply_to_id = await reply_id(event)
-    if not text and event.is_reply: 
+    if not text and event.is_reply:
         text = (await event.get_reply_message()).message
     else:
         await event.delete()

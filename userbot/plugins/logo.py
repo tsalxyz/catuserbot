@@ -39,9 +39,10 @@ vars_list = {
 
 plugin_category = "extra"
 
-    #raw_list = await event.get_history("@walpaper_aestetic")
-    #raw_message = random.choice(raw_list)
-    #await event.edit(raw_message.image)
+# raw_list = await event.get_history("@walpaper_aestetic")
+# raw_message = random.choice(raw_list)
+# await event.edit(raw_message.image)
+
 
 @catub.cat_cmd(pattern="glogo(?: |$)([\s\S]*)")
 async def Logo(event):
