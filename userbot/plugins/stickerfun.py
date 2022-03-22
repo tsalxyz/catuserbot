@@ -113,7 +113,7 @@ async def penguin(event):
 
 
 @catub.cat_cmd(
-    pattern="1ist ?(.*)",
+    pattern="ist ?(.*)",
     command=("ist", plugin_category),
     info={
         "header": "Inline Write-On Sticker",
@@ -132,6 +132,8 @@ async def isong(event):
     cmd = event.pattern_match.group(1).lower()
     text = event.pattern_match.group(2)
     reply_to_id = await reply_id(event)
+    if not text and event.is_reply: 
+        text = (await event.get_reply_message()).message
     if not text:
         await edit_delete(event, "`Give me a text`")
     else:
