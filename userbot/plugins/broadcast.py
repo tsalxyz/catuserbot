@@ -45,12 +45,6 @@ async def _(event):
             # fwd_message = await event.client.forward_messages(reply, silent=True)
             # await event.client.forward_messages(event.chat_id, fwd_message)
     await xyz.edit(f"`The message was sent to {i} chats.`")
-    if BOTLOG:
-        await event.client.send_message(
-            BOTLOG_CHATID,
-            f"A message is broadcast to {i} chats",
-            parse_mode=_format.parse_pre,
-        )
 
 
 @catub.cat_cmd(
