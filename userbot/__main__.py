@@ -1,7 +1,5 @@
 import sys
 
-from pytgcalls import idle
-
 import userbot
 from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
@@ -36,7 +34,6 @@ except Exception as e:
 
 
 async def startup_process():
-    await idle()
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
