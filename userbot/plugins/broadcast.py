@@ -27,8 +27,12 @@ LOGS = logging.getLogger(__name__)
 )
 async def _(event):
     "To broadcastv2 for the message"
-    reply = await event.get_reply_message()
-    if not reply:
+    xx = event.pattern_match.group(1)
+    if xx:
+        reply = xx
+    elif event.is_reply:
+        reply = await event.get_reply_message()
+    else:
         return await edit_delete(
             event,
             "Please reply message",
