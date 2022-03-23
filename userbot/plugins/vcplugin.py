@@ -33,10 +33,10 @@ from ..core.managers import bash, edit_delete, edit_or_reply
 
 
 def vcmention(user):
-    first_name = get_display_name(user)
+    full_name = get_display_name(user)
     if not isinstance(user, types.User):
-        return first_name
-    return f"[{first_name}](tg://user?id={user.id})"
+        return full_name
+    return f"[{full_name}](tg://user?id={user.id})"
 
 
 def ytsearch(query: str):
