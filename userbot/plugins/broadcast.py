@@ -28,8 +28,7 @@ LOGS = logging.getLogger(__name__)
 async def _(event):
     "To broadcastv2 for the message"
     if event.reply_to_msg_id is None:
-        return await edit_or_reoly(event, "Please reply message"
-        )
+        return await edit_or_reoly(event, "Please reply message")
     xyz = await edit_or_reply(event, "`Processing to broadcast...`")
     reply = await event.get_reply_message()
     i = 0
