@@ -27,18 +27,11 @@ LOGS = logging.getLogger(__name__)
 )
 async def _(event):
     "To broadcastv2 for the message"
-    xx = event.pattern_match.group(1)
-    if xx:
-        reply = xx
-    elif event.is_reply:
-        reply = await event.get_reply_message()
-    else:
-        return await edit_delete(
-            event,
-            "Please reply message",
-            parse_mode=_format.parse_pre,
+    if event.reply_to_msg_id is None:
+        return await edit_or_reoly(event, "Please reply message"
         )
     xyz = await edit_or_reply(event, "`Processing to broadcast...`")
+    reply = await event.get_reply_message()
     i = 0
     async for chat in event.client.iter_dialogs():
         if chat.is_group:
