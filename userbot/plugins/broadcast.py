@@ -42,9 +42,9 @@ async def gcast(event):
         if x.is_group:
             chat = x.id
             try:
+                done += 1
                 await event.client.send_message(chat, msg)
                 await asyncio.sleep(0.1)
-                done += 1
             except FloodWaitError:
                 await sleep(0.5)
             except BaseException:
