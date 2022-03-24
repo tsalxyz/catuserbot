@@ -42,9 +42,9 @@ async def _(event):
             LOGS.info(str(e))
     resultext = f"`The message was sent to {i} chats`"
     await edit_delete(xyz, resultext)
-            # fwd_message = await event.client.forward_messages(reply, silent=True)
-            # await event.client.forward_messages(event.chat_id, fwd_message)
-    #await xyz.edit(f"`The message was sent to {i} chats.`")
+    # fwd_message = await event.client.forward_messages(reply, silent=True)
+    # await event.client.forward_messages(event.chat_id, fwd_message)
+    # await xyz.edit(f"`The message was sent to {i} chats.`")
 
 
 @catub.cat_cmd(
