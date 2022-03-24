@@ -33,10 +33,10 @@ async def _(event):
     reply = await event.get_reply_message()
     i = 0
     async for x in event.client.iter_dialogs():
-         if x.is_group:
+        if x.is_group:
             chat = x.id
             await event.client.send_message(chat, reply)
-            await sleep(0,5)
+            await sleep(0, 5)
             i += 1
     resultext = f"`The message was sent to {i} chats`"
     await edit_delete(xyz, resultext)
