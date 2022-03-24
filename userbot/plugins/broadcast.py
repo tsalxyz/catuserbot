@@ -33,14 +33,18 @@ async def _(event):
     reply = await event.get_reply_message()
     i = 0
     async for chat in event.client.iter_dialogs():
-        if chat.is_group:
-            chat = chat.id
-            await event.client.send_message(chat, reply)
-            await sleep(0.5)
+        try:
+            if int(event.chat_id) == int(chat):
+                continue
+            await event.client.send_message(int(chat), reply)
             i += 1
+        except Exception as e:
+            LOGS.info(str(e))
+    resultext = f"`The message was sent to {i} chats`"
+    await edit_delete(xyz, resultext)
             # fwd_message = await event.client.forward_messages(reply, silent=True)
             # await event.client.forward_messages(event.chat_id, fwd_message)
-    await xyz.edit(f"`The message was sent to {i} chats.`")
+    #await xyz.edit(f"`The message was sent to {i} chats.`")
 
 
 @catub.cat_cmd(
