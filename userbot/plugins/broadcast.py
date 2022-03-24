@@ -33,11 +33,13 @@ async def _(event):
     reply = await event.get_reply_message()
     i = 0
     async for chat in event.client.iter_dialogs():
+        if x.is_group:
+            chat = x.id
         try:
-            if int(event.chat_id) == int(chat):
-                continue
-            await event.client.send_message(int(chat), reply)
-            i += 1
+            if x.is_group:
+              chat = x.id
+              await event.client.send_message(chat, reply)
+              i += 1
         except Exception as e:
             LOGS.info(str(e))
     resultext = f"`The message was sent to {i} chats`"
