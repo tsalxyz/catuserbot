@@ -38,7 +38,7 @@ async def _(event):
             try:
                 chat = x.id
                 await event.client.send_message(chat, reply)
-                await sleep(0, 5)
+                await sleep(0.5)
                 i += 1
             except FloodWaitError as anj:
                 await sleep(int(anj.seconds))
