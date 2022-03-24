@@ -26,27 +26,34 @@ LOGS = logging.getLogger(__name__)
         "examples": "{tr}bcv2 <reply>",
     },
 )
-async def _(event):
+async def gcast(event):
     "To broadcastv2 for the message"
-    catinput_str = event.pattern_match.group(1)
-    if not catinput_str:
-        return await edit_delete(event, "Please reply message")
-    reply = await event.get_reply_message()
-    xyz = await edit_or_reply(event, "`Processing to broadcast...`")
-    i = 0
+    xx = event.pattern_match.group(1)
+    if xx:
+        msg = xx
+    elif event.is_reply:
+        msg = await event.get_reply_message()
+    else:
+        return await edit_delete(event, "`Please reply message`")
+    kk = await edit_or_reply(event, "`Processing to broadcast...`")
+    er = 0
+    done = 0
     async for x in event.client.iter_dialogs():
         if x.is_group:
             chat = x.id
             try:
-                await event.client.send_message(chat, reply)
-                await sleep(0.1)
-                i += 1
+                await event.client.send_message(chat, msg)
+                await asyncio.sleep(0.1)
+                done += 1
             except FloodWaitError as anj:
-                await sleep(int(anj.seconds))
-                await event.client.send_message(chat, reply)
-                i += 1
-    resultext = f"`The message was sent to {i} chats`"
-    await edit_delete(xyz, resultext)
+                await asyncio.sleep(int(anj.seconds))
+                await event.client.send_message(chat, msg)
+                done += 1
+            except BaseException:
+                er += 1
+    await kk.edit(
+        f"`The message was sent to {done} chats, error in {er} chats`"
+    )
     # fwd_message = await event.client.forward_messages(reply, silent=True)
     # await event.client.forward_messages(event.chat_id, fwd_message)
     # await xyz.edit(f"`The message was sent to {i} chats.`")
