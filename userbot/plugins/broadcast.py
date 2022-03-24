@@ -45,13 +45,11 @@ async def gcast(event):
                 await event.client.send_message(chat, msg)
                 await asyncio.sleep(0.1)
                 done += 1
-            except FloodWaitError as anj:
-                await asyncio.sleep(int(anj.seconds))
-                await event.client.send_message(chat, msg)
-                done += 1
+            except FloodWaitError:
+                await sleep(0.5)
             except BaseException:
                 er += 1
-    await kk.edit(f"`The message was sent to {done} chats, error in {er} chats`")
+    await kk.edit(f"`The message was sent to` `{done}` `chats, error in` `{er}` chats`")
     # fwd_message = await event.client.forward_messages(reply, silent=True)
     # await event.client.forward_messages(event.chat_id, fwd_message)
     # await xyz.edit(f"`The message was sent to {i} chats.`")
