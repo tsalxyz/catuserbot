@@ -32,14 +32,12 @@ async def _(event):
     xyz = await edit_or_reply(event, "`Processing to broadcast...`")
     reply = await event.get_reply_message()
     i = 0
-    async for chat in event.client.iter_dialogs():
-        try:
-            if x.is_group:
-                chat = x.id
-                await event.client.send_message(chat, reply)
-                i += 1
-        except Exception as e:
-            LOGS.info(str(e))
+    async for x in event.client.iter_dialogs():
+         if x.is_group:
+            chat = x.id
+            await event.client.send_message(chat, reply)
+            await sleep(0,5)
+            i += 1
     resultext = f"`The message was sent to {i} chats`"
     await edit_delete(xyz, resultext)
     # fwd_message = await event.client.forward_messages(reply, silent=True)
