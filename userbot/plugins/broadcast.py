@@ -18,7 +18,7 @@ LOGS = logging.getLogger(__name__)
 
 
 @catub.cat_cmd(
-    pattern="bcv2$",
+    pattern="bcv2(?: |$)(.*)",
     command=("broadcastV2", plugin_category),
     info={
         "header": "To boradcastV2 for the message. send new message and reply",
@@ -28,17 +28,18 @@ LOGS = logging.getLogger(__name__)
 )
 async def _(event):
     "To broadcastv2 for the message"
-    if event.reply_to_msg_id is None:
-        return await edit_or_reoly(event, "Please reply message")
-    xyz = await edit_or_reply(event, "`Processing to broadcast...`")
+    catinput_str = event.pattern_match.group(1)
+    if not catinput_str:
+        return await edit_delete(event, "Please reply message")
     reply = await event.get_reply_message()
+    xyz = await edit_or_reply(event, "`Processing to broadcast...`")
     i = 0
     async for x in event.client.iter_dialogs():
         if x.is_group:
+            chat = x.id
             try:
-                chat = x.id
                 await event.client.send_message(chat, reply)
-                await sleep(0.5)
+                await sleep(0.1)
                 i += 1
             except FloodWaitError as anj:
                 await sleep(int(anj.seconds))
