@@ -33,8 +33,6 @@ async def _(event):
     reply = await event.get_reply_message()
     i = 0
     async for chat in event.client.iter_dialogs():
-        if x.is_group:
-            chat = x.id
         try:
             if x.is_group:
               chat = x.id
