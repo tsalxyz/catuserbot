@@ -3,6 +3,7 @@ from asyncio import sleep
 
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.utils import get_display_name
+from telethon.errors.rpcerrorlist import FloodWaitError
 
 from .. import catub
 from ..core.logger import logging
@@ -34,10 +35,15 @@ async def _(event):
     i = 0
     async for x in event.client.iter_dialogs():
         if x.is_group:
-            chat = x.id
-            await event.client.send_message(chat, reply)
-            await sleep(0, 5)
-            i += 1
+           try:
+              chat = x.id
+              await event.client.send_message(chat, reply)
+              await sleep(0, 5)
+              i += 1
+           except FloodWaitError as anj:
+              await sleep(int(anj.seconds))
+              await event.client.send_message(chat, reply)
+              i += 1
     resultext = f"`The message was sent to {i} chats`"
     await edit_delete(xyz, resultext)
     # fwd_message = await event.client.forward_messages(reply, silent=True)
