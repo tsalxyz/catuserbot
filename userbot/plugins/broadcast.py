@@ -51,9 +51,7 @@ async def gcast(event):
                 done += 1
             except BaseException:
                 er += 1
-    await kk.edit(
-        f"`The message was sent to {done} chats, error in {er} chats`"
-    )
+    await kk.edit(f"`The message was sent to {done} chats, error in {er} chats`")
     # fwd_message = await event.client.forward_messages(reply, silent=True)
     # await event.client.forward_messages(event.chat_id, fwd_message)
     # await xyz.edit(f"`The message was sent to {i} chats.`")
