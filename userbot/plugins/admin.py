@@ -6,12 +6,12 @@ from telethon.errors import (
     PhotoCropSizeSmallError,
 )
 from telethon.errors.rpcerrorlist import UserAdminInvalidError, UserIdInvalidError
+from telethon.tl import functions
 from telethon.tl.functions.channels import (
     EditAdminRequest,
     EditBannedRequest,
     EditPhotoRequest,
 )
-from telethon.tl import functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import (
     ChatAdminRights,
@@ -501,6 +501,7 @@ async def endmute(event):
                 f"**Chat :** {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
 
+
 @catub.cat_cmd(
     pattern="kinv(?:\s|$)([\s\S]*)",
     command=("kinv", plugin_category),
@@ -525,7 +526,11 @@ async def kinv(event):
     try:
         await event.client.kick_participant(event.chat_id, user.id)
         await sleep(0.9)
-        await event.client(functions.channels.InviteToChannelRequest(channel=event.chat_id, users=[user.id]))
+        await event.client(
+            functions.channels.InviteToChannelRequest(
+                channel=event.chat_id, users=[user.id]
+            )
+        )
     except Exception as e:
         return await catevent.edit(NO_PERM + f"\n{e}")
     if reason:
@@ -533,7 +538,9 @@ async def kinv(event):
             f"`Kick invited` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
         )
     else:
-        await catevent.edit(f"`Succesfully Kick invited` [{user.first_name}](tg://user?id={user.id})`!`")
+        await catevent.edit(
+            f"`Succesfully Kick invited` [{user.first_name}](tg://user?id={user.id})`!`"
+        )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -541,7 +548,8 @@ async def kinv(event):
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\n",
         )
-            
+
+
 @catub.cat_cmd(
     pattern="kick(?:\s|$)([\s\S]*)",
     command=("kick", plugin_category),
