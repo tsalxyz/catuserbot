@@ -11,6 +11,7 @@ from telethon.tl.functions.channels import (
     EditBannedRequest,
     EditPhotoRequest,
 )
+from telethon.tl import functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import (
     ChatAdminRights,
@@ -500,7 +501,47 @@ async def endmute(event):
                 f"**Chat :** {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
 
-
+@catub.cat_cmd(
+    pattern="kinv(?:\s|$)([\s\S]*)",
+    command=("kinv", plugin_category),
+    info={
+        "header": "To kick a person from the group",
+        "description": "Will kick the user from the group so he can join back.\
+        \nNote : You need proper rights for this.",
+        "usage": [
+            "{tr}kinv <userid/username/reply>",
+            "{tr}kinv <userid/username/reply> <reason>",
+        ],
+    },
+    groups_only=True,
+    require_admin=True,
+)
+async def kinv(event):
+    "use this to kick invite a user from chat"
+    user, reason = await get_user_from_event(event)
+    if not user:
+        return
+    catevent = await edit_or_reply(event, "`Processing...`")
+    try:
+        await event.client.kick_participant(event.chat_id, user.id)
+        await sleep(0.9)
+        await event.client(functions.channels.InviteToChannelRequest(channel=event.chat_id, users=[user.id])
+    except Exception as e:
+        return await catevent.edit(NO_PERM + f"\n{e}")
+    if reason:
+        await catevent.edit(
+            f"`Kick invited` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
+        )
+    else:
+        await catevent.edit(f"`Succesfully Kick invited` [{user.first_name}](tg://user?id={user.id})`!`")
+    if BOTLOG:
+        await event.client.send_message(
+            BOTLOG_CHATID,
+            "#KICK INVITED\n"
+            f"USER: [{user.first_name}](tg://user?id={user.id})\n"
+            f"CHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\n",
+        )
+            
 @catub.cat_cmd(
     pattern="kick(?:\s|$)([\s\S]*)",
     command=("kick", plugin_category),
