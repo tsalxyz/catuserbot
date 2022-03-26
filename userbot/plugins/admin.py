@@ -525,7 +525,7 @@ async def kinv(event):
     try:
         await event.client.kick_participant(event.chat_id, user.id)
         await sleep(0.9)
-        await event.client(functions.channels.InviteToChannelRequest(channel=event.chat_id, users=[user.id])
+        await event.client(functions.channels.InviteToChannelRequest(channel=event.chat_id, users=[user.id]))
     except Exception as e:
         return await catevent.edit(NO_PERM + f"\n{e}")
     if reason:
