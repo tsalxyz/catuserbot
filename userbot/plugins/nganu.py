@@ -1,5 +1,4 @@
 import asyncio
-import io
 import math
 import os
 import pathlib
@@ -7,8 +6,6 @@ import time
 from datetime import datetime
 
 from pySmartDL import SmartDL
-from telethon.tl import types
-from telethon.utils import get_extension
 
 from userbot import catub
 
@@ -28,7 +25,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
 
 @catub.cat_cmd(
     pattern="(sabar loadd|1000/10|mau agyyyy|jadi angee|loaddd)$",
-    #command=("apaloooooo", plugin_category),
+    # command=("apaloooooo", plugin_category),
 )
 async def _(event):
     if event.fwd_from:
@@ -53,11 +50,11 @@ async def _(event):
             await mone.edit(str(e))
         else:
             end = datetime.now()
-            ms = (end - start).seconds
+            (end - start).seconds
             print("sukses download")
-            #await mone.edit(
-                #f"**  •  Downloaded in {ms} seconds.**\n**  •  Downloaded to :- ** `{downloaded_file_name}`\n**  •  Downloaded by :-** {DEFAULTUSER}"
-            #)
+            # await mone.edit(
+            # f"**  •  Downloaded in {ms} seconds.**\n**  •  Downloaded to :- ** `{downloaded_file_name}`\n**  •  Downloaded by :-** {DEFAULTUSER}"
+            # )
     elif input_str:
         start = datetime.now()
         url = input_str
@@ -98,12 +95,12 @@ async def _(event):
             except Exception as e:
                 logger.info(str(e))
         end = datetime.now()
-        ms = (end - start).seconds
+        (end - start).seconds
         if downloader.isSuccessful():
             print("sukses download")
-            #await mone.edit(
-                #f"**  •  Downloaded in {ms} seconds.**\n**  •  Downloaded to :- ** `{downloaded_file_name}`"
-            #)
+            # await mone.edit(
+            # f"**  •  Downloaded in {ms} seconds.**\n**  •  Downloaded to :- ** `{downloaded_file_name}`"
+            # )
         else:
             await mone.edit("Incorrect URL\n {}".format(input_str))
     else:
